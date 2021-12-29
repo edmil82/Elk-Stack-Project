@@ -10,6 +10,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
   - _TODO: Enter the playbook file._
   - 1
+  - <code>
   ---
   - name: Configure Elk VM with Docker
     hosts: elk
@@ -61,6 +62,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
         systemd:
           name: #TODO
           enabled: #TODO
+</code>
 
 This document contains the following details:
 - Description of the Topologu
