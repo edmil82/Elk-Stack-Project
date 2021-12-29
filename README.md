@@ -6,9 +6,61 @@ The files in this repository were used to configure the network depicted below.
 
 ![TODO: Update the path with the name of your diagram](https://github.com/edmil82/Elk-Stack-Project/blob/main/Network%20Diagram.PNG)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
   - _TODO: Enter the playbook file._
+  - 1
+---
+- name: Configure Elk VM with Docker
+  hosts: elk
+  remote_user: azadmin
+  become: true
+  tasks:
+    # Use apt module
+    - name: Install docker.io
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        name: #TODO
+        state: #TODO
+      # Use apt module
+    - name: Install python3-pip
+      apt:
+        force_apt_get: yes
+        name: #TODO
+        state: #TODO
+      # Use pip module (It will default to pip3)
+    - name: Install Docker module
+      pip:
+        name: #TODO
+        state: #TODO
+      # Use command module
+    - name: Increase virtual memory
+      command: sysctl -w vm.max_map_count=262144
+      # Use sysctl module
+    - name: Use more memory
+      sysctl:
+        name: #TODO
+        value: #TODO
+        state: #TODO
+        reload: #TODO
+      # Use docker_container module
+    - name: download and launch a docker elk container
+      docker_container:
+        name: elk
+        image: sebp/elk:761
+        state: started
+        restart_policy: always
+        # Please list the ports that ELK runs on
+        published_ports:
+          -  #TODO
+          -  #TODO
+          -  #TODO
+      # Use systemd module
+    - name: Enable service docker on boot
+      systemd:
+        name: #TODO
+        enabled: #TODO
 
 This document contains the following details:
 - Description of the Topologu
