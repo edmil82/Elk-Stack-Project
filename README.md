@@ -88,17 +88,19 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Jump Box | Gateway  | 52.150.8.108   | Linux            |
+| Web-1     |          | 137.117.68.195         |    Linux              |
+| Web-2     |          | 137.117.68.195            | Linux                  |
+
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the __jumpbox___ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+52.150.8.108  
+137.117.68.195    
+137.117.68.195 
 
 Machines within the network can only be accessed by _jumpbox____.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
@@ -107,7 +109,7 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
+| Jump Box | Yes/No              | 10.0.0.7 10.0.0.9    |
 |          |                     |                      |
 |          |                     |                      |
 
@@ -131,24 +133,32 @@ The following screenshot displays the result of running `docker ps` after succes
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 - _TODO: List the IP addresses of the machines you are monitoring_
+-   52.150.8.108  
+    137.117.68.195    
+    137.117.68.195 
 
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
+-   Filebeat
+-   Metricbeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
-
+-   Filebeat sends all of the log files to the ELK stack in creating synchronized logging.
+-   Metricbeat records the actual metrics which allows getting statistical analysis.
+-   
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the __yml___ file to _vm home directory____.
+- Update the _host____ file to include ip addresses
+- Run the playbook, and navigate to vm home directory_ to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- _Which file is the playbook? Where do you copy it?_ansible.yml, copy to vm home directory
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_  hosts
 - _Which URL do you navigate to in order to check that the ELK server is running?
+- DVWA
 
 _As a **Bonus**, provide the specific commands the user will need
